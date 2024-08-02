@@ -1,0 +1,54 @@
+/* Style for the table container */
+.action-item-table-container {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Style for the table */
+  .action-item-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Style for table headers */
+  .action-item-table thead {
+    background-color: #f4f4f4;
+  }
+  
+  .action-item-table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Style for table rows */
+  .action-item-table tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .action-item-table td {
+    padding: 12px 15px;
+    color: #555;
+  }
+  
+  /* Alternate row colors */
+  .action-item-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for table cells */
+  .action-item-table td {
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  /* Hover effect for rows */
+  .action-item-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
