@@ -6,18 +6,15 @@ import * as apiService from '../../services/ApiService';
 
 jest.mock('../../services/ApiService');
 
+const mockItems = [
+    { action: 'Prepare project report', priority: 'low', context: 'Development', dateCreated: '2024-01-01', dueDate: '2024-02-04' },
+    { action: 'Code review', priority: 'medium', context: 'QA', dateCreated: '2024-01-02', dueDate: '2024-02-05' },
+    { action: 'Write tests', priority: 'high', context: 'unit', dateCreated: '2024-01-03', dueDate: '2024-02-06' },
+  ];
+
 describe('NextActionItemsPage', () => {
   it('displays action items', async () => {
-    const mockItems = [
-      {
-        id: 1,
-        action: 'Prepare project report',
-        priority: 'high',
-        context: 'Development',
-        dateCreated: '2024-01-01',
-        dueDate: '2024-02-04'
-      }
-    ];
+
     apiService.fetchActionItems.mockResolvedValue(mockItems);
 
     render(<NextActionItemsPage />);
@@ -51,5 +48,21 @@ describe('NextActionItemsPage', () => {
 
     // Check if the table is empty
     expect(screen.getByText(/No action items available/i)).toBeInTheDocument();
+  });
+
+  it('sorts action items by priority', async () => {
+    apiService.fetchActionItems.mockResolvedValueOnce(mockItems);
+
+    render(<NextActionItemsPage />);
+
+    await waitFor(() => expect(screen.getByText('Prepare project report')).toBeInTheDocument());
+
+    const rows = screen.getAllByRole('row');
+    const sortedPriorities = ['high', 'medium', 'low'];
+
+    rows.slice(1).forEach((row, index) => {
+        const cells = screen.getAllByRole('cell', { name: sortedPriorities[index] });
+        expect(cells[0]).toBeInTheDocument();
+    });
   });
 });

@@ -23,7 +23,7 @@ describe('fetchActionItems', () => {
     const data = await fetchActionItems();
     expect(data).toEqual(mockData);
   });
-
+ 
   it('throws an error when the network response is not ok', async () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({

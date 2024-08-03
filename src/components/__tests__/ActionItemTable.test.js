@@ -10,7 +10,7 @@ const mockItems = [
     priority: 'high',
     context: 'Development',
     dateCreated: '2024-01-01',
-    dueDate: '2024-02-04'
+    dueDate: '2024-02-04' 
   }
 ];
 
